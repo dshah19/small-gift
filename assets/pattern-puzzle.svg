@@ -1,0 +1,21 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .puzzle-bg { fill: #1a1a1a; }
+      .puzzle-shape { fill: #00D2BE; stroke: #FFFFFF; stroke-width: 2; }
+      .puzzle-text { fill: #FFFFFF; font-family: Arial; font-size: 20px; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="puzzle-bg" width="400" height="300"/>
+  
+  <!-- Decorative shapes -->
+  <circle class="puzzle-shape" cx="100" cy="80" r="40"/>
+  <rect class="puzzle-shape" x="200" y="50" width="80" height="80"/>
+  <polygon class="puzzle-shape" points="80,200 120,250 40,250"/>
+  <circle class="puzzle-shape" cx="280" cy="200" r="35"/>
+  
+  <!-- Text -->
+  <text class="puzzle-text" x="200" y="290">Find the differences!</text>
+</svg>

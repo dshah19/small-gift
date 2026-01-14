@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Game - Debug Console</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        #debug-console {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            border-top: 2px solid #0f0;
+            padding: 10px;
+            z-index: 10000;
+        }
+        
+        .debug-line {
+            margin: 2px 0;
+            padding: 2px;
+        }
+        
+        .debug-error {
+            color: #f00;
+        }
+        
+        .debug-success {
+            color: #0f0;
+        }
+        
+        .debug-info {
+            color: #0ff;
+        }
+        
+        #app {
+            margin-bottom: 210px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="app-container"></div>
+    <div id="debug-console"></div>
+    
+    <script>
+        // Capture console logs
+        const debugConsole = document.getElementById('debug-console');
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        function addDebugLine(message, type = 'info') {
+            const line = document.createElement('div');
+            line.className = `debug-line debug-${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            debugConsole.appendChild(line);
+            debugConsole.scrollTop = debugConsole.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addDebugLine(args.join(' '), 'info');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addDebugLine(args.join(' '), 'error');
+        };
+        
+        addDebugLine('Debug console initialized', 'success');
+    </script>
+    
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

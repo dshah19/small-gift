@@ -1,0 +1,2058 @@
+/* F1 Apology Gift Game - Main Stylesheet */
+
+:root {
+    /* F1 Colors */
+    --color-mercedes-silver: #00D2BE;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-dark-gray: #1a1a1a;
+    --color-light-gray: #f5f5f5;
+    
+    /* Theme Colors */
+    --color-f1-red: #DC0000;
+    --color-football-blue: #003399;
+    --color-office-orange: #FF6B35;
+    --color-personal-purple: #9D4EDD;
+    
+    /* Feedback Colors */
+    --color-success: #4CAF50;
+    --color-error: #F44336;
+    --color-warning: #FF9800;
+    --color-info: #2196F3;
+    
+    /* Typography */
+    --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 24px;
+    --font-size-xlarge: 32px;
+    --font-size-small: 14px;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+    --transition-slow: 500ms ease-in-out;
+    
+    /* Z-index */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-modal: 1000;
+    --z-tooltip: 1100;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* App Container */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 100%);
+}
+
+/* Responsive Typography */
+@media (max-width: 1024px) {
+    :root {
+        --font-size-base: 15px;
+        --font-size-large: 22px;
+        --font-size-xlarge: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 14px;
+        --font-size-large: 20px;
+        --font-size-xlarge: 28px;
+        --font-size-small: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-base: 13px;
+        --font-size-large: 18px;
+        --font-size-xlarge: 24px;
+        --font-size-small: 11px;
+    }
+}
+
+@media (max-width: 320px) {
+    :root {
+        --font-size-base: 11px;
+        --font-size-large: 16px;
+        --font-size-xlarge: 20px;
+        --font-size-small: 10px;
+    }
+}
+
+/* Utility Classes */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: var(--spacing-xs);
+    }
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: var(--color-white);
+}
+
+.text-silver {
+    color: var(--color-mercedes-silver);
+}
+
+/* Button Styles */
+button {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-weight: 600;
+    min-height: 44px;
+    touch-action: manipulation;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 210, 190, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus {
+    outline: 2px solid var(--color-mercedes-silver);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background-color: var(--color-mercedes-silver);
+    color: var(--color-black);
+}
+
+.btn-primary:hover {
+    background-color: #00b8a0;
+}
+
+.btn-secondary {
+    background-color: var(--color-black);
+    color: var(--color-mercedes-silver);
+    border: 2px solid var(--color-mercedes-silver);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-mercedes-silver);
+    color: var(--color-black);
+}
+
+@media (max-width: 768px) {
+    button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-small);
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-small);
+        min-height: 40px;
+        width: 100%;
+    }
+}
+
+
+/* Welcome Screen */
+.welcome-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: var(--spacing-md);
+}
+
+.welcome-content {
+    text-align: center;
+    padding: var(--spacing-xl);
+    max-width: 600px;
+    width: 100%;
+}
+
+.welcome-title {
+    font-size: var(--font-size-xlarge);
+    color: var(--color-mercedes-silver);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 210, 190, 0.3);
+    word-wrap: break-word;
+}
+
+.welcome-subtitle {
+    font-size: var(--font-size-large);
+    color: var(--color-light-gray);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
+    word-wrap: break-word;
+}
+
+.btn-start {
+    font-size: var(--font-size-large);
+    padding: var(--spacing-lg) var(--spacing-xxl);
+    margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .welcome-screen {
+        padding: var(--spacing-md);
+    }
+    
+    .welcome-content {
+        padding: var(--spacing-lg);
+        max-width: 90%;
+    }
+    
+    .btn-start {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-screen {
+        padding: var(--spacing-sm);
+        min-height: 100vh;
+    }
+    
+    .welcome-content {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+    }
+    
+    .welcome-title {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .welcome-subtitle {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .btn-start {
+        width: 100%;
+        font-size: var(--font-size-base);
+        padding: var(--spacing-md) var(--spacing-md);
+    }
+}
+
+/* Game Screen */
+.game-screen {
+    width: 100%;
+    max-width: 1000px;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.game-header {
+    background: rgba(0, 210, 190, 0.1);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid var(--color-mercedes-silver);
+}
+
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.progress-label {
+    color: var(--color-light-gray);
+}
+
+.progress-value {
+    color: var(--color-mercedes-silver);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: var(--color-dark-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--color-mercedes-silver);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-mercedes-silver), #00b8a0);
+    transition: width var(--transition-slow);
+    border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+    .game-screen {
+        max-width: 100%;
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .game-screen {
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+    
+    .game-header,
+    .track-section,
+    .puzzle-section {
+        padding: var(--spacing-md);
+        border-radius: 6px;
+    }
+    
+    .progress-text {
+        font-size: var(--font-size-base);
+    }
+    
+    .progress-bar {
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-screen {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    
+    .game-header,
+    .track-section,
+    .puzzle-section {
+        padding: var(--spacing-md);
+        border-radius: 4px;
+        border-width: 1px;
+    }
+    
+    .progress-text {
+        font-size: var(--font-size-small);
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .progress-bar {
+        height: 16px;
+        border-width: 1px;
+    }
+}
+
+/* Track Section */
+.track-section {
+    background: linear-gradient(180deg, rgba(0, 210, 190, 0.05), rgba(0, 0, 0, 0.3));
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid var(--color-mercedes-silver);
+}
+
+.track {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 210, 190, 0.2) 50%, 
+        transparent 100%);
+    border-radius: 40px;
+    border: 2px dashed var(--color-mercedes-silver);
+    overflow: hidden;
+}
+
+.car {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    transition: left var(--transition-normal);
+    z-index: var(--z-base);
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    .track-section {
+        padding: var(--spacing-md);
+        border-radius: 6px;
+    }
+    
+    .track {
+        height: 60px;
+        border-radius: 30px;
+        border-width: 1px;
+    }
+    
+    .car {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .track-section {
+        padding: var(--spacing-md);
+        border-radius: 4px;
+        border-width: 1px;
+    }
+    
+    .track {
+        height: 50px;
+        border-radius: 25px;
+        border-width: 1px;
+    }
+    
+    .car {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 320px) {
+    .track {
+        height: 40px;
+        border-radius: 20px;
+    }
+    
+    .car {
+        font-size: 20px;
+    }
+}
+
+/* Puzzle Section */
+.puzzle-section {
+    background: rgba(0, 210, 190, 0.05);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid var(--color-mercedes-silver);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.puzzle-question {
+    font-size: var(--font-size-large);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .puzzle-section {
+        padding: var(--spacing-md);
+        border-radius: 6px;
+        min-height: 250px;
+    }
+    
+    .puzzle-question {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .puzzle-section {
+        padding: var(--spacing-md);
+        border-radius: 4px;
+        border-width: 1px;
+        min-height: 200px;
+    }
+    
+    .puzzle-question {
+        font-size: var(--font-size-small);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+/* Trivia Puzzle */
+.trivia-puzzle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.puzzle-theme-badge {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 20px;
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.puzzle-theme-badge[data-theme="f1"] {
+    background-color: rgba(220, 0, 0, 0.2);
+    color: #DC0000;
+    border: 1px solid #DC0000;
+}
+
+.puzzle-theme-badge[data-theme="football"] {
+    background-color: rgba(0, 51, 153, 0.2);
+    color: #003399;
+    border: 1px solid #003399;
+}
+
+.puzzle-theme-badge[data-theme="office"] {
+    background-color: rgba(255, 107, 53, 0.2);
+    color: #FF6B35;
+    border: 1px solid #FF6B35;
+}
+
+.puzzle-theme-badge[data-theme="personal"] {
+    background-color: rgba(157, 78, 221, 0.2);
+    color: #9D4EDD;
+    border: 1px solid #9D4EDD;
+}
+
+/* Personal Memory Theme Styling */
+.puzzle-section[data-theme="personal"] {
+    background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(0, 210, 190, 0.05));
+    border: 2px solid #9D4EDD;
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.2);
+}
+
+.puzzle-section[data-theme="personal"] .puzzle-question {
+    color: #9D4EDD;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(157, 78, 221, 0.3);
+}
+
+.puzzle-section[data-theme="personal"] .puzzle-option {
+    border-color: #9D4EDD;
+    transition: all var(--transition-normal);
+}
+
+.puzzle-section[data-theme="personal"] .puzzle-option:hover:not(:disabled) {
+    background-color: #9D4EDD;
+    color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(157, 78, 221, 0.5);
+}
+
+.puzzle-section[data-theme="personal"] .trivia-puzzle {
+    background: rgba(157, 78, 221, 0.05);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 1px solid rgba(157, 78, 221, 0.3);
+}
+
+/* Personal Memory Badge Styling */
+.puzzle-section[data-theme="personal"] .puzzle-theme-badge {
+    background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(157, 78, 221, 0.1));
+    box-shadow: 0 2px 8px rgba(157, 78, 221, 0.3);
+    animation: personalMemoryGlow 2s ease-in-out infinite;
+}
+
+@keyframes personalMemoryGlow {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(157, 78, 221, 0.3);
+    }
+    50% {
+        box-shadow: 0 2px 16px rgba(157, 78, 221, 0.6);
+    }
+}
+
+.puzzle-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.puzzle-option {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 2px solid var(--color-mercedes-silver);
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-align: left;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+    touch-action: manipulation;
+}
+
+.puzzle-option:hover:not(:disabled) {
+    background-color: var(--color-mercedes-silver);
+    color: var(--color-black);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 210, 190, 0.4);
+}
+
+.puzzle-option:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.puzzle-option:disabled {
+    cursor: not-allowed;
+}
+
+.puzzle-option.selected-answer {
+    background-color: var(--color-mercedes-silver);
+    color: var(--color-black);
+    border-color: var(--color-mercedes-silver);
+}
+
+.puzzle-option.correct-answer {
+    background-color: var(--color-success);
+    color: var(--color-white);
+    border-color: var(--color-success);
+    animation: pulse 0.5s ease-out;
+}
+
+.puzzle-option.incorrect-answer {
+    background-color: var(--color-error);
+    color: var(--color-white);
+    border-color: var(--color-error);
+    animation: shake 0.4s ease-out;
+}
+
+@media (max-width: 768px) {
+    .puzzle-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .puzzle-option {
+        min-height: 50px;
+        font-size: var(--font-size-small);
+        padding: var(--spacing-md) var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .puzzle-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .puzzle-option {
+        min-height: 45px;
+        font-size: var(--font-size-small);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: 3px;
+        border-width: 1px;
+    }
+    
+    .puzzle-option:hover:not(:disabled) {
+        transform: scale(1.02);
+        box-shadow: 0 2px 8px rgba(0, 210, 190, 0.3);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.puzzle-feedback {
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    animation: slideUp var(--transition-normal) ease-out;
+    position: relative;
+    margin-top: var(--spacing-lg);
+}
+
+.puzzle-feedback.feedback-success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: var(--color-success);
+    border: 2px solid var(--color-success);
+}
+
+.puzzle-feedback.feedback-error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: var(--color-error);
+    border: 2px solid var(--color-error);
+}
+
+/* Pattern Puzzle */
+.pattern-puzzle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.pattern-image {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+    border: 2px solid var(--color-mercedes-silver);
+    object-fit: contain;
+}
+
+/* Spot the Difference Puzzle */
+.pattern-puzzle.spot-difference {
+    width: 100%;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+}
+
+.clickable-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    z-index: 10;
+}
+
+.difference-marker {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-success);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: markerPulse 0.5s ease-out;
+    pointer-events: none;
+}
+
+@keyframes markerPulse {
+    0% {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+    }
+    100% {
+        width: 40px;
+        height: 40px;
+        opacity: 0.7;
+    }
+}
+
+.hint-text {
+    font-size: var(--font-size-small);
+    color: var(--color-light-gray);
+    font-style: italic;
+    margin-top: var(--spacing-md);
+}
+
+/* Memory Game Puzzle */
+.pattern-puzzle.memory-game {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .pattern-image {
+        max-height: 300px;
+    }
+    
+    .image-container {
+        max-width: 100%;
+    }
+    
+    .hint-text {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pattern-image {
+        max-height: 250px;
+        border-radius: 4px;
+        border-width: 1px;
+    }
+    
+    .image-container {
+        max-width: 100%;
+    }
+    
+    .hint-text {
+        font-size: 11px;
+        margin-top: var(--spacing-sm);
+    }
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 400px;
+    margin: var(--spacing-lg) auto;
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    cursor: pointer;
+    perspective: 1000px;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.memory-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    border: 2px solid var(--color-mercedes-silver);
+}
+
+.card-front {
+    background-color: var(--color-mercedes-silver);
+    color: var(--color-black);
+}
+
+.card-back {
+    background-color: var(--color-black);
+    color: var(--color-mercedes-silver);
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched .card-front,
+.memory-card.matched .card-back {
+    background-color: var(--color-success);
+    color: var(--color-white);
+    border-color: var(--color-success);
+}
+
+.memory-stats {
+    font-size: var(--font-size-base);
+    color: var(--color-light-gray);
+    margin-top: var(--spacing-md);
+}
+
+#match-count {
+    color: var(--color-mercedes-silver);
+    font-weight: 600;
+}
+
+/* Responsive Memory Grid */
+@media (max-width: 768px) {
+    .memory-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 300px;
+        gap: var(--spacing-md);
+    }
+    
+    .card-front,
+    .card-back {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: var(--spacing-sm);
+        margin: var(--spacing-md) auto;
+    }
+    
+    .card-front,
+    .card-back {
+        font-size: 20px;
+        border-width: 1px;
+    }
+    
+    .memory-stats {
+        font-size: var(--font-size-small);
+        margin-top: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 320px) {
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: 4px;
+    }
+    
+    .card-front,
+    .card-back {
+        font-size: 14px;
+        border-width: 1px;
+    }
+}
+
+/* Completion Screen */
+.completion-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: var(--spacing-lg);
+}
+
+.completion-content {
+    text-align: center;
+    max-width: 600px;
+    background: rgba(0, 210, 190, 0.1);
+    padding: var(--spacing-xxl);
+    border-radius: 8px;
+    border: 2px solid var(--color-mercedes-silver);
+    width: 100%;
+}
+
+.checkered-flag {
+    font-size: 80px;
+    margin-bottom: var(--spacing-lg);
+    animation: wave 1s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+.completion-title {
+    font-size: var(--font-size-xlarge);
+    color: var(--color-mercedes-silver);
+    margin-bottom: var(--spacing-lg);
+}
+
+.apology-message {
+    background: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-lg);
+    border-radius: 4px;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.apology-message p {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+    color: var(--color-light-gray);
+    word-wrap: break-word;
+}
+
+.apology-message p:last-child {
+    margin-bottom: 0;
+}
+
+.couple-photo-container {
+    margin: var(--spacing-lg) 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.couple-photo {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    border: 3px solid var(--color-mercedes-silver);
+    box-shadow: 0 4px 12px rgba(0, 210, 190, 0.3);
+    object-fit: cover;
+}
+
+.get-well-message {
+    background: rgba(157, 78, 221, 0.2);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    border: 2px solid #9D4EDD;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-large);
+    font-weight: 700;
+    color: #9D4EDD;
+    text-align: center;
+}
+
+.get-well-message p {
+    margin: 0;
+}
+
+.completion-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.stat-label {
+    font-size: var(--font-size-small);
+    color: var(--color-light-gray);
+}
+
+.stat-value {
+    font-size: var(--font-size-large);
+    color: var(--color-mercedes-silver);
+    font-weight: 700;
+}
+
+.completion-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.completion-actions button {
+    flex: 1;
+    min-width: 150px;
+}
+
+@media (max-width: 768px) {
+    .completion-screen {
+        padding: var(--spacing-md);
+    }
+    
+    .completion-content {
+        padding: var(--spacing-lg);
+        max-width: 95%;
+        border-radius: 6px;
+    }
+    
+    .checkered-flag {
+        font-size: 60px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .completion-title {
+        font-size: var(--font-size-large);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .apology-message {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: 3px;
+    }
+    
+    .apology-message p {
+        font-size: var(--font-size-small);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .couple-photo-container {
+        margin: var(--spacing-md) 0;
+        min-height: 150px;
+    }
+    
+    .couple-photo {
+        max-height: 250px;
+        border-width: 2px;
+    }
+    
+    .get-well-message {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-base);
+        border-width: 1px;
+    }
+    
+    .completion-stats {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .completion-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .completion-actions button {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .completion-screen {
+        padding: var(--spacing-md);
+        min-height: 100vh;
+    }
+    
+    .completion-content {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+        border-radius: 4px;
+        border-width: 1px;
+    }
+    
+    .checkered-flag {
+        font-size: 50px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .completion-title {
+        font-size: var(--font-size-large);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .apology-message {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: 3px;
+    }
+    
+    .apology-message p {
+        font-size: var(--font-size-small);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .couple-photo-container {
+        margin: var(--spacing-md) 0;
+        min-height: 150px;
+    }
+    
+    .couple-photo {
+        max-height: 180px;
+        border-width: 2px;
+    }
+    
+    .get-well-message {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-base);
+        border-width: 1px;
+    }
+    
+    .completion-stats {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .stat-label {
+        font-size: 12px;
+    }
+    
+    .stat-value {
+        font-size: var(--font-size-base);
+    }
+    
+    .completion-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .completion-actions button {
+        width: 100%;
+        min-width: auto;
+        padding: var(--spacing-md) var(--spacing-md);
+        font-size: var(--font-size-small);
+    }
+}
+
+/* Feedback Messages */
+.feedback-message {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 4px;
+    font-weight: 600;
+    z-index: var(--z-modal);
+    animation: slideUp var(--transition-normal) ease-out;
+    max-width: 90%;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.feedback-success {
+    background-color: var(--color-success);
+    color: var(--color-white);
+}
+
+.feedback-error {
+    background-color: var(--color-error);
+    color: var(--color-white);
+}
+
+.feedback-info {
+    background-color: var(--color-info);
+    color: var(--color-white);
+}
+
+.feedback-warning {
+    background-color: var(--color-warning);
+    color: var(--color-white);
+}
+
+@media (max-width: 480px) {
+    .feedback-message {
+        bottom: var(--spacing-md);
+        left: var(--spacing-md);
+        right: var(--spacing-md);
+        transform: none;
+        padding: var(--spacing-md);
+        font-size: var(--font-size-small);
+        border-radius: 3px;
+        max-width: none;
+    }
+}
+
+/* Animations */
+.checkered-flag-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    font-size: 100px;
+    z-index: var(--z-modal);
+    pointer-events: none;
+}
+
+.checkered-flag-animation.animate {
+    animation: flagWave 1s ease-out forwards;
+}
+
+@keyframes flagWave {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-mercedes-silver);
+    pointer-events: none;
+    animation: confettiFall 3s ease-in forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design - Tablet (768px and below) */
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 20px;
+        --spacing-xl: 24px;
+    }
+    
+    .game-screen {
+        padding: var(--spacing-md);
+        max-width: 100%;
+    }
+    
+    .game-header,
+    .track-section,
+    .puzzle-section {
+        padding: var(--spacing-md);
+        border-radius: 6px;
+    }
+    
+    .puzzle-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .completion-stats {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .welcome-title {
+        font-size: var(--font-size-large);
+    }
+    
+    .welcome-content {
+        padding: var(--spacing-lg);
+        max-width: 90%;
+    }
+    
+    .track {
+        height: 60px;
+        border-radius: 30px;
+    }
+    
+    .car {
+        font-size: 30px;
+    }
+    
+    .puzzle-option {
+        min-height: 50px;
+        font-size: var(--font-size-small);
+        padding: var(--spacing-md) var(--spacing-md);
+    }
+    
+    .puzzle-question {
+        font-size: var(--font-size-base);
+    }
+    
+    .progress-text {
+        font-size: var(--font-size-base);
+    }
+    
+    .btn-start {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .completion-content {
+        padding: var(--spacing-lg);
+        max-width: 95%;
+    }
+    
+    .checkered-flag {
+        font-size: 60px;
+    }
+    
+    .completion-title {
+        font-size: var(--font-size-large);
+    }
+    
+    .couple-photo {
+        max-height: 250px;
+    }
+    
+    .completion-actions {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .completion-actions button {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .pattern-image {
+        max-height: 300px;
+    }
+    
+    .image-container {
+        max-width: 100%;
+    }
+}
+
+/* Responsive Design - Mobile (480px and below) */
+@media (max-width: 480px) {
+    :root {
+        --spacing-lg: 16px;
+        --spacing-xl: 20px;
+        --spacing-xxl: 24px;
+    }
+    
+    .app-container {
+        padding: 0;
+    }
+    
+    .game-screen {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+        max-width: 100%;
+    }
+    
+    .game-header,
+    .track-section,
+    .puzzle-section {
+        padding: var(--spacing-md);
+        border-radius: 4px;
+        gap: var(--spacing-sm);
+    }
+    
+    .container {
+        padding: var(--spacing-sm);
+    }
+    
+    .welcome-screen {
+        min-height: 100vh;
+        padding: var(--spacing-md);
+    }
+    
+    .welcome-content {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+    }
+    
+    .welcome-title {
+        font-size: var(--font-size-xlarge);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .welcome-subtitle {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .btn-start {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-md) var(--spacing-lg);
+        width: 100%;
+    }
+    
+    .progress-text {
+        font-size: var(--font-size-small);
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .progress-label,
+    .progress-value {
+        font-size: var(--font-size-small);
+    }
+    
+    .progress-bar {
+        height: 16px;
+        border-width: 1px;
+    }
+    
+    .track {
+        height: 50px;
+        border-radius: 25px;
+        border-width: 1px;
+    }
+    
+    .car {
+        font-size: 24px;
+    }
+    
+    .puzzle-question {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .puzzle-options {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .puzzle-option {
+        min-height: 45px;
+        font-size: var(--font-size-small);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: 3px;
+        border-width: 1px;
+    }
+    
+    .puzzle-option:hover:not(:disabled) {
+        transform: scale(1.02);
+    }
+    
+    .puzzle-theme-badge {
+        font-size: 12px;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .completion-screen {
+        padding: var(--spacing-md);
+        min-height: 100vh;
+    }
+    
+    .completion-content {
+        padding: var(--spacing-lg);
+        max-width: 100%;
+        border-radius: 4px;
+        border-width: 1px;
+    }
+    
+    .checkered-flag {
+        font-size: 50px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .completion-title {
+        font-size: var(--font-size-large);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .apology-message {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: 3px;
+    }
+    
+    .apology-message p {
+        font-size: var(--font-size-small);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .couple-photo-container {
+        margin: var(--spacing-md) 0;
+        min-height: 150px;
+    }
+    
+    .couple-photo {
+        max-height: 180px;
+        border-width: 2px;
+    }
+    
+    .get-well-message {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-base);
+        border-width: 1px;
+    }
+    
+    .completion-stats {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .stat {
+        gap: var(--spacing-xs);
+    }
+    
+    .stat-label {
+        font-size: 12px;
+    }
+    
+    .stat-value {
+        font-size: var(--font-size-base);
+    }
+    
+    .completion-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .completion-actions button {
+        width: 100%;
+        min-width: auto;
+        padding: var(--spacing-md) var(--spacing-md);
+        font-size: var(--font-size-small);
+    }
+    
+    button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-small);
+        border-radius: 3px;
+    }
+    
+    button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 210, 190, 0.2);
+    }
+    
+    .pattern-image {
+        max-height: 250px;
+        border-radius: 4px;
+        border-width: 1px;
+    }
+    
+    .image-container {
+        max-width: 100%;
+    }
+    
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: var(--spacing-sm);
+    }
+    
+    .card-front,
+    .card-back {
+        font-size: 18px;
+        border-width: 1px;
+    }
+    
+    .memory-stats {
+        font-size: var(--font-size-small);
+        margin-top: var(--spacing-sm);
+    }
+    
+    .feedback-message {
+        bottom: var(--spacing-md);
+        left: var(--spacing-md);
+        right: var(--spacing-md);
+        transform: none;
+        padding: var(--spacing-md);
+        font-size: var(--font-size-small);
+        border-radius: 3px;
+    }
+}
+
+/* Extra Small Devices (320px and below) */
+@media (max-width: 320px) {
+    :root {
+        --font-size-base: 11px;
+        --font-size-large: 16px;
+        --font-size-xlarge: 20px;
+        --spacing-md: 12px;
+        --spacing-lg: 14px;
+    }
+    
+    .welcome-title {
+        font-size: var(--font-size-large);
+    }
+    
+    .puzzle-option {
+        min-height: 40px;
+        font-size: 10px;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .track {
+        height: 40px;
+    }
+    
+    .car {
+        font-size: 20px;
+    }
+    
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: 4px;
+    }
+    
+    .card-front,
+    .card-back {
+        font-size: 14px;
+    }
+}
+
+
+/* Accessibility Improvements */
+
+/* Focus Styles for Keyboard Navigation */
+button:focus,
+.puzzle-option:focus,
+.memory-card:focus,
+.clickable-overlay:focus {
+    outline: 3px solid var(--color-mercedes-silver);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: more) {
+    :root {
+        --color-mercedes-silver: #00E6D0;
+        --color-success: #00AA00;
+        --color-error: #FF0000;
+    }
+    
+    button {
+        border: 2px solid currentColor;
+    }
+    
+    .puzzle-option {
+        border-width: 3px;
+    }
+    
+    .progress-bar {
+        border-width: 3px;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .car {
+        transition: none;
+    }
+    
+    .progress-fill {
+        transition: none;
+    }
+    
+    .puzzle-option:hover {
+        transform: none;
+    }
+    
+    .checkered-flag {
+        animation: none;
+    }
+}
+
+/* Color Contrast Enhancements */
+/* Ensure text has sufficient contrast */
+.puzzle-question {
+    color: var(--color-white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.progress-label {
+    color: var(--color-light-gray);
+    font-weight: 600;
+}
+
+.progress-value {
+    color: var(--color-mercedes-silver);
+    font-weight: 700;
+}
+
+/* Ensure button text is readable */
+.btn-primary {
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.btn-secondary {
+    color: var(--color-mercedes-silver);
+    font-weight: 700;
+}
+
+/* Ensure puzzle options have good contrast */
+.puzzle-option {
+    color: var(--color-white);
+    background-color: var(--color-black);
+    border: 2px solid var(--color-mercedes-silver);
+}
+
+.puzzle-option:hover:not(:disabled) {
+    color: var(--color-black);
+    background-color: var(--color-mercedes-silver);
+}
+
+/* Ensure feedback messages have good contrast */
+.puzzle-feedback.feedback-success {
+    background-color: rgba(76, 175, 80, 0.3);
+    color: #00FF00;
+    border: 2px solid #00FF00;
+    font-weight: 700;
+}
+
+.puzzle-feedback.feedback-error {
+    background-color: rgba(244, 67, 54, 0.3);
+    color: #FF6666;
+    border: 2px solid #FF6666;
+    font-weight: 700;
+}
+
+/* Skip to main content link (for screen readers) */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-mercedes-silver);
+    color: var(--color-black);
+    padding: 8px;
+    text-decoration: none;
+    z-index: var(--z-tooltip);
+    font-weight: 600;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+/* Ensure memory cards are accessible */
+.memory-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.memory-card:focus {
+    outline: 3px solid var(--color-mercedes-silver);
+    outline-offset: 2px;
+}
+
+.memory-card:hover {
+    transform: scale(1.05);
+}
+
+/* Ensure clickable overlay is accessible */
+.clickable-overlay {
+    cursor: crosshair;
+    outline: none;
+}
+
+.clickable-overlay:focus {
+    outline: 3px solid var(--color-mercedes-silver);
+    outline-offset: 2px;
+}
+
+/* Ensure all interactive elements have minimum touch target size */
+button,
+.puzzle-option,
+.memory-card,
+.clickable-overlay {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Responsive touch target sizes for smaller screens */
+@media (max-width: 480px) {
+    button,
+    .puzzle-option,
+    .memory-card {
+        min-width: 48px;
+        min-height: 48px;
+    }
+}
+
+/* Ensure text is readable with proper line height */
+body {
+    line-height: 1.6;
+}
+
+.puzzle-question,
+.apology-message p,
+.welcome-subtitle {
+    line-height: 1.8;
+}
+
+/* Ensure form elements are accessible */
+input,
+textarea,
+select {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+}
+
+/* Ensure links are underlined for clarity */
+a {
+    text-decoration: underline;
+    color: var(--color-mercedes-silver);
+}
+
+a:visited {
+    color: #00b8a0;
+}
+
+a:focus {
+    outline: 2px solid var(--color-mercedes-silver);
+    outline-offset: 2px;
+}
+
+/* Ensure images have proper spacing */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure headings have proper hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Ensure lists are properly formatted */
+ul, ol {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+/* Ensure code blocks are readable */
+code, pre {
+    font-family: 'Courier New', monospace;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Ensure tables are accessible */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid var(--color-mercedes-silver);
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(0, 210, 190, 0.2);
+    font-weight: 700;
+}
+
+/* Ensure form labels are associated with inputs */
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+/* Ensure disabled elements are visually distinct */
+button:disabled,
+.puzzle-option:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Ensure error messages are clear */
+.error-message {
+    color: var(--color-error);
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* Ensure success messages are clear */
+.success-message {
+    color: var(--color-success);
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* Ensure warning messages are clear */
+.warning-message {
+    color: var(--color-warning);
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* Ensure info messages are clear */
+.info-message {
+    color: var(--color-info);
+    font-weight: 700;
+    margin-top: 4px;
+}

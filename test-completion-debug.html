@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completion Screen Debug</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app" class="app-container"></div>
+    
+    <script type="module">
+        import { UIManager } from './js/modules/UIManager.js';
+        
+        const uiManager = new UIManager();
+        const container = document.getElementById('app');
+        
+        const testStats = {
+            puzzlesSolved: 11,
+            totalPuzzles: 11,
+            timeTaken: 300,
+            playerName: 'Test Player',
+            photoUrl: 'assets/couple-photo.jpg',
+            customMessage: 'Thank you for being patient with me. I\'m sorry for what happened.',
+            customMessage2: 'I hope this little race brought a smile to your face.'
+        };
+        
+        console.log('🧪 Testing completion screen rendering...');
+        console.log('Stats:', testStats);
+        
+        uiManager.renderCompletionScreen(container, testStats);
+        
+        console.log('✅ Completion screen rendered');
+        console.log('Image element:', container.querySelector('.couple-photo'));
+        console.log('Photo container:', container.querySelector('.couple-photo-container'));
+        
+        // Check if image is visible
+        const img = container.querySelector('.couple-photo');
+        if (img) {
+            console.log('Image src:', img.src);
+            console.log('Image display:', window.getComputedStyle(img).display);
+            console.log('Image visibility:', window.getComputedStyle(img).visibility);
+        }
+    </script>
+</body>
+</html>

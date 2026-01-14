@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Completion Screen</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app" class="app-container"></div>
+    
+    <script type="module">
+        import { UIManager } from './js/modules/UIManager.js';
+        
+        const uiManager = new UIManager();
+        const container = document.getElementById('app');
+        
+        const testStats = {
+            puzzlesSolved: 8,
+            totalPuzzles: 8,
+            timeTaken: 323,
+            playerName: 'Test User',
+            photoUrl: 'assets/couple-photo.jpg',
+            customMessage: 'Thank you for being patient with me. I\'m sorry for what happened.',
+            customMessage2: 'I hope this little race brought a smile to your face.'
+        };
+        
+        console.log('Testing completion screen with stats:', testStats);
+        uiManager.renderCompletionScreen(container, testStats);
+        console.log('Completion screen rendered');
+        
+        // Check if elements are visible
+        setTimeout(() => {
+            const photo = document.querySelector('.couple-photo');
+            const message = document.querySelector('.apology-message');
+            const title = document.querySelector('.completion-title');
+            
+            console.log('Photo element:', photo);
+            console.log('Photo src:', photo ? photo.src : 'NOT FOUND');
+            console.log('Photo display:', photo ? window.getComputedStyle(photo).display : 'N/A');
+            
+            console.log('Message element:', message);
+            console.log('Message text:', message ? message.textContent : 'NOT FOUND');
+            console.log('Message display:', message ? window.getComputedStyle(message).display : 'N/A');
+            
+            console.log('Title element:', title);
+            console.log('Title text:', title ? title.textContent : 'NOT FOUND');
+        }, 500);
+    </script>
+</body>
+</html>

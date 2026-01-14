@@ -63,7 +63,7 @@ function generatePerformanceReport(originalSize, minifiedSize, filename) {
  * Build and optimize the project
  */
 async function build() {
-    console.log('🚀 Starting F1 Apology Gift Game build...\n');
+    console.log('🚀 Starting Small Gift build...\n');
     
     try {
         // Create dist directory if it doesn't exist
@@ -72,62 +72,39 @@ async function build() {
             fs.mkdirSync(distDir, { recursive: true });
         }
         
-        // Minify CSS
-        console.log('📦 Optimizing CSS...');
+        // Copy CSS
+        console.log('📦 Copying CSS...');
         const cssPath = path.join(__dirname, 'css', 'styles.css');
         const cssContent = fs.readFileSync(cssPath, 'utf-8');
-        const minifiedCSS = minifyCSS(cssContent);
-        const cssDistPath = path.join(distDir, 'styles.min.css');
-        fs.writeFileSync(cssDistPath, minifiedCSS);
-        generatePerformanceReport(cssContent.length, minifiedCSS.length, 'styles.css');
+        const cssDistPath = path.join(distDir, 'css', 'styles.css');
+        fs.mkdirSync(path.dirname(cssDistPath), { recursive: true });
+        fs.writeFileSync(cssDistPath, cssContent);
+        console.log(`✓ styles.css (${(cssContent.length / 1024).toFixed(2)} KB)`);
         
-        // Minify JavaScript files
-        console.log('\n📦 Optimizing JavaScript...');
+        // Copy JavaScript files
+        console.log('\n📦 Copying JavaScript...');
         const jsDir = path.join(__dirname, 'js');
         const jsFiles = getAllJSFiles(jsDir);
         
-        let totalOriginalSize = 0;
-        let totalMinifiedSize = 0;
-        
         for (const file of jsFiles) {
             const jsContent = fs.readFileSync(file, 'utf-8');
-            const minifiedJS = minifyJS(jsContent);
             const relativePath = path.relative(__dirname, file);
-            const distPath = path.join(distDir, relativePath.replace(/\.js$/, '.min.js'));
+            const distPath = path.join(distDir, relativePath);
             
             // Create directory if needed
             fs.mkdirSync(path.dirname(distPath), { recursive: true });
-            fs.writeFileSync(distPath, minifiedJS);
+            fs.writeFileSync(distPath, jsContent);
             
-            totalOriginalSize += jsContent.length;
-            totalMinifiedSize += minifiedJS.length;
-            
-            generatePerformanceReport(jsContent.length, minifiedJS.length, relativePath);
+            console.log(`✓ ${relativePath} (${(jsContent.length / 1024).toFixed(2)} KB)`);
         }
         
-        // Copy HTML with optimization
-        console.log('\n📦 Optimizing HTML...');
+        // Copy HTML
+        console.log('\n📦 Copying HTML...');
         const htmlPath = path.join(__dirname, 'index.html');
-        let htmlContent = fs.readFileSync(htmlPath, 'utf-8');
-        
-        // Add lazy loading attributes and preload hints
-        htmlContent = htmlContent
-            .replace(/<link rel="stylesheet" href="css\/styles.css">/,
-                '<link rel="stylesheet" href="css/styles.min.css">')
-            .replace(/<script src="js\/main.js" type="module"><\/script>/,
-                '<script src="js/main.min.js" type="module" defer></script>');
-        
-        // Add preload for critical resources
-        const preloadHints = `
-    <link rel="preload" as="style" href="css/styles.min.css">
-    <link rel="preload" as="script" href="js/main.min.js">
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">`;
-        
-        htmlContent = htmlContent.replace('</head>', preloadHints + '\n</head>');
-        
+        const htmlContent = fs.readFileSync(htmlPath, 'utf-8');
         const htmlDistPath = path.join(distDir, 'index.html');
         fs.writeFileSync(htmlDistPath, htmlContent);
-        generatePerformanceReport(fs.readFileSync(htmlPath, 'utf-8').length, htmlContent.length, 'index.html');
+        console.log(`✓ index.html (${(htmlContent.length / 1024).toFixed(2)} KB)`);
         
         // Copy assets
         console.log('\n📦 Copying assets...');
@@ -137,12 +114,6 @@ async function build() {
             copyDirectory(assetsDir, assetsDistDir);
             console.log('✓ Assets copied');
         }
-        
-        // Generate performance metrics
-        console.log('\n📊 Build Summary:');
-        console.log(`Total JavaScript Original: ${(totalOriginalSize / 1024).toFixed(2)} KB`);
-        console.log(`Total JavaScript Minified: ${(totalMinifiedSize / 1024).toFixed(2)} KB`);
-        console.log(`Total Reduction: ${((1 - totalMinifiedSize / totalOriginalSize) * 100).toFixed(2)}%`);
         
         console.log('\n✅ Build complete! Output in ./dist/');
         
